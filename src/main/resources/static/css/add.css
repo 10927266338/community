@@ -1,0 +1,53 @@
+p{
+    margin: 10px 0 10px 10px;
+}
+p a{
+    color: #000000;
+}
+p a:hover{
+    color: orange;
+}
+h1{
+    margin-left: 46%;
+}
+span{
+    margin-right: 20px;
+    font-size: 20px;
+}
+input{
+    margin-left: 10px;
+    width: 250px;
+    height: 40px;
+    font-size: 18px;
+    padding-left: 5px;
+}
+table{
+    margin: 0 auto;
+}
+table tr{
+    margin: 10px 0;
+}
+.AddBt input{
+    width: 50px;
+    height: 40px;
+    border: 0;
+    background-color: greenyellow;
+    color: white;
+    border-radius: 10%;
+}
+.AddBt input:nth-child(1){
+    margin-left: 47%;
+    margin-top: 10px;
+}
+.AddBt input:nth-child(2){
+    background-color: red;
+    margin-left: 25px;
+}
+.AddBt input:nth-child(1):hover{
+    background-color: deepskyblue;
+    color: #00a4ff;
+}
+.AddBt input:nth-child(2):hover{
+    background-color: #00a4ff;
+    color: red;
+}

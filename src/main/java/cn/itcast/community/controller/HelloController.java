@@ -13,6 +13,6 @@ public class HelloController {
     public String hello(@RequestParam(name = "name")String name, Model model){
         model.addAttribute("name",name);
         System.out.println("hello");
-        return "success";
+        return "index";
     }
 }

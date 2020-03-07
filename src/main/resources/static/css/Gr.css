@@ -1,0 +1,39 @@
+.my{
+    width: 1629px;
+    height: 755px;
+    padding: 10px 0 0 10px;
+}
+.my p{
+    margin: 10px 0 10px 10px;
+}
+.my p a{
+    color: #000000;
+}
+.my p a:hover{
+    color: orange;
+}
+table{
+    margin: 10px;
+}
+table tr:nth-child(1){
+    background: orange;
+    text-align: center;
+    color: white;
+}
+table tr .bt{
+    width: 100px;
+}
+table tr .bts{
+    padding-left: 8px;
+}
+table tr input{
+    width: 40px;
+    height: 35px;
+    border: 0;
+    background-color: #00a4ff;
+    color: white;
+    border-radius: 10%;
+}
+table tr input:nth-child(2){
+    background-color: red;
+}
