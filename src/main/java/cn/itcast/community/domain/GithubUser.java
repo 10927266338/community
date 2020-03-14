@@ -1,6 +1,10 @@
 package cn.itcast.community.domain;
 
+import javax.persistence.*;
+
+
 public class GithubUser {
+
 
     private Long id;
     private String name;
