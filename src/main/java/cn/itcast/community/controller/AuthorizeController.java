@@ -42,8 +42,8 @@ public class AuthorizeController {
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessTokenDTO(accessTokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
-        System.out.println(githubUser.getName());
         if(githubUser!=null){
+            System.out.println(githubUser.getName());
             User user = new User();
             String token=UUID.randomUUID().toString();
             user.setToken(token);
@@ -51,11 +51,12 @@ public class AuthorizeController {
             user.setAccountId(String.valueOf(githubUser.getId()));
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
+            user.setAvatarUrl(githubUser.getAvatar_url());
             userDao.save(user);
             response.addCookie(new Cookie("token",token));
             return "redirect:/hello/run";
         }else {
-            return "redirect:/hello/run";
+            return "redirect:/hello/error";
         }
     }
 }
