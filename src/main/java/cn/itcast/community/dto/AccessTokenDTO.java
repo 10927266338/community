@@ -1,4 +1,4 @@
-package cn.itcast.community.domain;
+package cn.itcast.community.dto;
 
 import lombok.Data;
 

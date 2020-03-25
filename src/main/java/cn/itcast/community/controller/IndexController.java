@@ -1,9 +1,10 @@
 package cn.itcast.community.controller;
 
-import cn.itcast.community.dao.QuestionDao;
 import cn.itcast.community.dao.UserDao;
-import cn.itcast.community.domain.Question;
-import cn.itcast.community.domain.User;
+import cn.itcast.community.dto.QuestionDTO;
+import cn.itcast.community.model.Question;
+import cn.itcast.community.model.User;
+import cn.itcast.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +16,12 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/hello")
-public class HelloController {
+public class IndexController {
 
     @Autowired
     private UserDao userDao;
     @Autowired
-    private QuestionDao questionDao;
+    private QuestionService questionService;
 
     @RequestMapping("/run")
     public String hello(Model model, HttpServletRequest request){
@@ -38,7 +39,7 @@ public class HelloController {
                 }
             }
         }
-        List<Question> questions = questionDao.findAll();
+        List<QuestionDTO> questions = questionService.findAll();
         List<User> list = userDao.findAll();
         model.addAttribute("questions",questions);
         return "index";

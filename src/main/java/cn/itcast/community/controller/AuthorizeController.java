@@ -1,9 +1,9 @@
 package cn.itcast.community.controller;
 
 import cn.itcast.community.dao.UserDao;
-import cn.itcast.community.domain.AccessTokenDTO;
-import cn.itcast.community.domain.GithubUser;
-import cn.itcast.community.domain.User;
+import cn.itcast.community.dto.AccessTokenDTO;
+import cn.itcast.community.dto.GithubUser;
+import cn.itcast.community.model.User;
 import cn.itcast.community.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

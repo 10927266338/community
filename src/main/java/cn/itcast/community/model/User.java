@@ -1,9 +1,8 @@
-package cn.itcast.community.domain;
+package cn.itcast.community.model;
 
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 @Entity

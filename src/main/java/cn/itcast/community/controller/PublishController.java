@@ -2,8 +2,8 @@ package cn.itcast.community.controller;
 
 import cn.itcast.community.dao.QuestionDao;
 import cn.itcast.community.dao.UserDao;
-import cn.itcast.community.domain.Question;
-import cn.itcast.community.domain.User;
+import cn.itcast.community.model.Question;
+import cn.itcast.community.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -70,6 +70,7 @@ public class PublishController {
         question.setDescription(description);
         question.setTag(tag);
         question.setGmtModified(user.getGmtModified());
+        question.setGmtCreate(user.getGmtCreate());
         questionDao.save(question);
         return "redirect:/hello/run";
     }

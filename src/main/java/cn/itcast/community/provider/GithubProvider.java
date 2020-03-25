@@ -1,7 +1,7 @@
 package cn.itcast.community.provider;
 
-import cn.itcast.community.domain.AccessTokenDTO;
-import cn.itcast.community.domain.GithubUser;
+import cn.itcast.community.dto.AccessTokenDTO;
+import cn.itcast.community.dto.GithubUser;
 import com.alibaba.fastjson.JSON;
 import okhttp3.*;
 import org.springframework.stereotype.Controller;

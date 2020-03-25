@@ -1,9 +1,8 @@
-package cn.itcast.community.domain;
+package cn.itcast.community.model;
 
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "question")
@@ -13,12 +12,13 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;   //问题标题
-    private String description;     //问题补充
+    @Column(columnDefinition = "varchar(1000) default 'LTD'")
+    private String description;     //问题内容
     private String tag;         //标签
     private Long gmtCreate;     //发布时间
     private Long gmtModified;
     private Integer creator;      //用户id
-    private Integer viewCount;      //回复数量
-    private Integer commentCount;   //浏览数量
-    private Integer likeCount;      //点赞数量
+    private Integer viewCount=0;      //回复数量
+    private Integer commentCount=0;   //浏览数量
+    private Integer likeCount=0;      //点赞数量
 }
