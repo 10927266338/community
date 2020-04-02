@@ -1,14 +1,15 @@
 package cn.itcast.community.controller;
 
 import cn.itcast.community.dao.UserDao;
+import cn.itcast.community.dto.PaginationDTO;
 import cn.itcast.community.dto.QuestionDTO;
-import cn.itcast.community.model.Question;
 import cn.itcast.community.model.User;
 import cn.itcast.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -24,24 +25,14 @@ public class IndexController {
     private QuestionService questionService;
 
     @RequestMapping("/run")
-    public String hello(Model model, HttpServletRequest request){
+    public String hello(Model model, HttpServletRequest request,
+                        @RequestParam(name = "page",defaultValue = "0")Integer page,
+                        @RequestParam(name = "size",defaultValue = "5")Integer size
+                        ){
 
-        Cookie[] cookies = request.getCookies();
-        if (cookies!=null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("token")) {
-                    String token = cookie.getValue();
-                    User user = userDao.findByToken(token);
-                    if (user != null) {
-                        request.getSession().setAttribute("user", user);
-                    }
-                    break;
-                }
-            }
-        }
-        List<QuestionDTO> questions = questionService.findAll();
-        List<User> list = userDao.findAll();
-        model.addAttribute("questions",questions);
+
+        PaginationDTO paginationDTO= questionService.findAll(page,size);
+        model.addAttribute("paginationDTO",paginationDTO);
         return "index";
     }
 
