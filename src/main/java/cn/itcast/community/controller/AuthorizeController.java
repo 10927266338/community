@@ -5,6 +5,7 @@ import cn.itcast.community.dto.AccessTokenDTO;
 import cn.itcast.community.dto.GithubUser;
 import cn.itcast.community.model.User;
 import cn.itcast.community.provider.GithubProvider;
+import cn.itcast.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ public class AuthorizeController {
     @Autowired
     private GithubProvider githubProvider;
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
     @Value("${github.client.id}")
     private String clientID;
     @Value("${github.client.secret}")
@@ -49,10 +50,8 @@ public class AuthorizeController {
             user.setToken(token);
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
             user.setAvatarUrl(githubUser.getAvatar_url());
-            userDao.save(user);
+            userService.save(user);
             response.addCookie(new Cookie("token",token));
             return "redirect:/hello/run";
         }else {

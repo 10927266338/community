@@ -8,4 +8,5 @@ public interface UserDao extends JpaRepository<User,Long> , JpaSpecificationExec
 
     User findByToken(String token);
     User findById(Integer id);
+    User findByAccountId(String accountId);
 }

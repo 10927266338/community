@@ -12,4 +12,6 @@ public interface QuestionDao extends JpaRepository<Question,Integer>, JpaSpecifi
     public Integer findCount();
     @Query(value = "select count(1) from question where creator=?",nativeQuery = true)
     public Integer findCount(Integer userId);
+    @Query(value = "select * from question where id=?",nativeQuery = true)
+    public Question findQuestion(Integer id);
 }

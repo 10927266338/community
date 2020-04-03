@@ -91,4 +91,12 @@ public class QuestionService {
     }
 
 
+    public QuestionDTO findAll(Integer id) {
+        Question question = questionDao.findQuestion(id);
+        QuestionDTO questionDTO=new QuestionDTO();
+        BeanUtils.copyProperties(question,questionDTO);
+        User user = userDao.findById(question.getCreator());
+        questionDTO.setUser(user);
+        return  questionDTO;
+    }
 }

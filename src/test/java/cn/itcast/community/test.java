@@ -71,4 +71,14 @@ public class test {
         List<Question> content = creator.getContent();
         System.out.println(content);
     }
+    @Test
+    public void run4(){
+        Question question = questionDao.findQuestion(2);
+        System.out.println(question);
+    }
+    @Test
+    public void run5(){
+        User user = userDao.findByAccountId("61818356");
+        System.out.println(user);
+    }
 }
