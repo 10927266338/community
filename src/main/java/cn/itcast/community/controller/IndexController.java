@@ -46,7 +46,7 @@ public class IndexController {
     public String esc(HttpServletRequest request, HttpServletResponse response){
         request.getSession().removeAttribute("user");
         Cookie cookie=new Cookie("token",null);
-        cookie.setMaxAge(0);
+        cookie.setMaxAge(-1);
         cookie.setValue(null);
         response.addCookie(cookie);
         return "redirect:/hello/run";

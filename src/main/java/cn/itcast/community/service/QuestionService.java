@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuestionService {
@@ -56,7 +57,7 @@ public class QuestionService {
 
 
 
-
+    //根据分页查询并返回数据
     public PaginationDTO findAll(Integer userId,Integer page, Integer size){
         //根据开始和每页显示多少查询
         Pageable pageable=PageRequest.of(page,size);
@@ -90,7 +91,7 @@ public class QuestionService {
         return paginationDTO;
     }
 
-
+    //将问题及页数返回
     public QuestionDTO findAll(Integer id) {
         Question question = questionDao.findQuestion(id);
         QuestionDTO questionDTO=new QuestionDTO();
@@ -98,5 +99,24 @@ public class QuestionService {
         User user = userDao.findById(question.getCreator());
         questionDTO.setUser(user);
         return  questionDTO;
+    }
+
+    //编辑问题
+    public void save(Question question) {
+       if (question.getId()==null){
+           //创建
+           question.setGmtModified(question.getGmtModified());
+           question.setGmtCreate(System.currentTimeMillis());
+           questionDao.save(question);
+       }else {
+           //跟新
+           question.setGmtModified(question.getGmtModified());
+           questionDao.save(question);
+       }
+    }
+    //根据问题找到问题的发起者及发起内容
+    public Question findQuestion(Integer id) {
+        Question question = questionDao.findQuestion(id);
+        return question;
     }
 }
